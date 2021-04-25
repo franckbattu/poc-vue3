@@ -11,3 +11,4 @@ Tested with:
 - Global SCSS injection with main file
 - TS Path configuration
 - Proxy configuration for HTTP request in dev server
+- Integration of Jest and Cypress

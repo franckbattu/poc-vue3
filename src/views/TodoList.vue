@@ -1,5 +1,5 @@
 <template>
-  <h1>Mes todos</h1>
+  <h1 class="title">Mes todos</h1>
   <div class="buttons">
     <button v-on:click="increase(2)">Incrémenter</button>
     <button @click="decrease()">Décrémenter</button>
