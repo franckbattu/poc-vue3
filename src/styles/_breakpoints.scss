@@ -1,0 +1,15 @@
+$breakpoints: (
+  small-mobile: 576px,
+  mobile: 768px,
+  laptop: 992px,
+  large-laptop: 1200px,
+);
+
+// Mixin for breakpoints
+@mixin screen($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

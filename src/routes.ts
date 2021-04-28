@@ -1,15 +1,29 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    name: 'Home',
+    component: () => import('./views/Home.vue'),
+    meta: {
+      title: 'Home'
+    }
+  },
+  {
     path: '/todos',
     name: 'Todos',
-    component: () => import('./views/TodoList.vue')
+    component: () => import('./views/Todos.vue'),
+    meta: {
+      title: 'Todos'
+    }
   },
   {
     path: '/posts',
     name: 'Posts',
-    component: () => import('./views/Posts.vue')
+    component: () => import('./views/Posts.vue'),
+    meta: {
+      title: 'Posts'
+    }
   }
 ]
 
@@ -17,5 +31,15 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  if (to.meta.hasOwnProperty('title')) {
+    document.title = `${to.meta.title as string} - Vue 3 with ViteJS`;
+    next();
+  }
+  else {
+    next();
+  }
+});
 
 export default router;

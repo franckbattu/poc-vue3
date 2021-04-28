@@ -4,18 +4,21 @@
     <section class="content">
       <router-view></router-view>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Navbar from "./components/Navbar.vue";
+import Footer from './components/Footer.vue';
 import { useInitialStore } from "./services/initial-store.service";
 
 export default defineComponent({
   name: "App",
   components: {
     Navbar,
+    Footer
   },
 
   setup() {
@@ -35,7 +38,6 @@ export default defineComponent({
 
   > .content {
     flex-grow: 1;
-    margin-top: 40px;
   }
 }
 </style>

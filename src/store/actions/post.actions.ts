@@ -1,7 +1,6 @@
 import { Post, State } from "@app/models";
-import { AxiosStatic } from "axios";
-import { inject } from "vue";
 import { ActionTree } from "vuex";
+import { useApiService } from "../../services/api.service";
 import { PostMutationsType } from "../mutations/post.mutations";
 import { ActionArguments } from "../utils";
 
@@ -25,9 +24,8 @@ export const postActions: ActionTree<State, State> & PostActions = {
     commit(PostMutationsType.RemovePost, post);
   },
   async [PostActionsType.LoadInitialPosts]({ commit }: { commit: any }) {
-    const axios = inject('axios') as AxiosStatic;
-    const response = await axios.get('/api/posts');
-    const posts = response.data;
+    const { get } = useApiService();
+    const posts = await get<Post[]>('/api/posts');
     commit(PostMutationsType.LoadInitial, posts);
   }
 }

@@ -2,31 +2,36 @@
   <nav>
     <ul>
       <li><router-link to="/" class="link">Home</router-link></li>
-      <li><router-link to="/todos" class="link">TodoList</router-link></li>
+      <li><router-link to="/todos" class="link">To-do List ({{ totalTodos }})</router-link></li>
       <li><router-link to="/posts" class="link">Posts</router-link></li>
-      <li>Counter : {{ count }}</li>
     </ul>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { useAppStore } from "@app/store";
+import { computed, defineComponent } from "vue";
 import { useCountService } from "../services/counter.service";
 
 export default defineComponent({
   name: "Navbar",
 
   setup() {
-    const { count } = useCountService();
-    
+    const store = useAppStore();
+    const totalTodos = computed(() => store.getters.totalTodos);
+
     return {
-      count
+      totalTodos
     }
   },
 });
 </script>
 
 <style lang="scss" scoped>
+nav {
+  height: 50px;
+}
+
 ul {
   display: flex;
   background-color: var(--blue);

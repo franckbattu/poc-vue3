@@ -17,7 +17,8 @@ export const store = createStore<State>({
   },
   actions,
   mutations,
-  getters
+  getters,
+  strict: true
 });
 
 export function useAppStore() {
