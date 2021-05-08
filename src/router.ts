@@ -3,15 +3,15 @@ import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNorma
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: () => import('./views/Home.vue'),
     meta: {
-      title: 'Home'
-    }
+      title: 'Home',
+    },
   },
   {
     path: '/todos',
-    name: 'Todos',
+    name: 'todos',
     component: () => import('./views/Todos.vue'),
     meta: {
       title: 'Todos'
@@ -19,18 +19,18 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/posts',
-    name: 'Posts',
+    name: 'posts',
     component: () => import('./views/Posts.vue'),
     meta: {
       title: 'Posts'
     }
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
-})
+});
 
 router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (to.meta.hasOwnProperty('title')) {

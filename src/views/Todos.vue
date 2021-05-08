@@ -31,9 +31,8 @@ export default defineComponent({
     const todos: ComputedRef<Todo[]> = computed(() => store.getters.todos);
     const todosCompleted: ComputedRef<number> = computed(() => store.getters.completedTodos);
     const totalTodos = computed(() => todos.value.length);
-
     const { increase, decrease } = useCountService();
-
+    
     return {
       todos,
       increase,

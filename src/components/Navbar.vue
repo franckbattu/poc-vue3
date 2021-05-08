@@ -1,9 +1,9 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/" class="link">Home</router-link></li>
-      <li><router-link to="/todos" class="link">To-do List ({{ totalTodos }})</router-link></li>
-      <li><router-link to="/posts" class="link">Posts</router-link></li>
+      <li><router-link :to="{ name: 'home' }" class="link">Home</router-link></li>
+      <li><router-link :to="{ name: 'todos' }" class="link">To-do List ({{ totalTodos }})</router-link></li>
+      <li><router-link :to="{ name: 'posts' }" class="link">Posts</router-link></li>
     </ul>
   </nav>
 </template>
@@ -11,7 +11,6 @@
 <script lang="ts">
 import { useAppStore } from "@app/store";
 import { computed, defineComponent } from "vue";
-import { useCountService } from "../services/counter.service";
 
 export default defineComponent({
   name: "Navbar",
