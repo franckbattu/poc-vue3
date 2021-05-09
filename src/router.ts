@@ -1,5 +1,13 @@
 import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    title: string;
+    layout?: string;
+    protected?: boolean;
+  }
+}
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -22,7 +30,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'posts',
     component: () => import('./views/Posts.vue'),
     meta: {
-      title: 'Posts'
+      title: 'Posts',
+      layout: 'AdminLayout'
     }
   }
 ];
